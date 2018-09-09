@@ -1,0 +1,3 @@
+measure
+static ARM, Axis=Z, AF=100, Ramp rate=3, Hold time=3, ARM field=100, Velocity=2500
+EOS

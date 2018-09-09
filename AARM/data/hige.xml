@@ -1,0 +1,130 @@
+<?xml version='1.0' standalone='yes' ?>
+<LVData xmlns="http://www.ni.com/LVData">
+<Version>17.0f2</Version>
+<Cluster>
+<Name>Hardware</Name>
+<NumElts>6</NumElts>
+<Cluster>
+<Name>SQUID</Name>
+<NumElts>5</NumElts>
+<Refnum>
+<Name>port</Name>
+<RefKind>VISA</RefKind>
+<Val>COM9</Val>
+</Refnum>
+<Cluster>
+<Name>Flux constant</Name>
+<NumElts>3</NumElts>
+<DBL>
+<Name>X</Name>
+<Val>8.34000000000000E-5</Val>
+</DBL>
+<DBL>
+<Name>Y</Name>
+<Val>-8.11000000000000E-5</Val>
+</DBL>
+<DBL>
+<Name>Z</Name>
+<Val>-4.28000000000000E-5</Val>
+</DBL>
+</Cluster>
+<U16>
+<Name>X</Name>
+<Val>10</Val>
+</U16>
+<U16>
+<Name>Y</Name>
+<Val>10</Val>
+</U16>
+<U16>
+<Name>Z</Name>
+<Val>10</Val>
+</U16>
+</Cluster>
+<Cluster>
+<Name>Sample Handler</Name>
+<NumElts>9</NumElts>
+<Refnum>
+<Name>port</Name>
+<RefKind>VISA</RefKind>
+<Val>COM7</Val>
+</Refnum>
+<I32>
+<Name>BG 1</Name>
+<Val>82132</Val>
+</I32>
+<I32>
+<Name>BG 2</Name>
+<Val>22571</Val>
+</I32>
+<I32>
+<Name>Sensor</Name>
+<Val>74765</Val>
+</I32>
+<I32>
+<Name>AF 1</Name>
+<Val>51160</Val>
+</I32>
+<I32>
+<Name>AF 2</Name>
+<Val>123198</Val>
+</I32>
+<I32>
+<Name>AF coil</Name>
+<Val>110030</Val>
+</I32>
+<I32>
+<Name>Home (absolute)</Name>
+<Val>72</Val>
+</I32>
+<I32>
+<Name>Home (relative to limit switch)</Name>
+<Val>990</Val>
+</I32>
+</Cluster>
+<Cluster>
+<Name>Degausser</Name>
+<NumElts>3</NumElts>
+<Refnum>
+<Name>port</Name>
+<RefKind>VISA</RefKind>
+<Val>COM10</Val>
+</Refnum>
+<I16>
+<Name>Tracking timeout (sec)</Name>
+<Val>60</Val>
+</I16>
+<I16>
+<Name>Communication Delays</Name>
+<Val>350</Val>
+</I16>
+</Cluster>
+<Cluster>
+<Name>ARM Unit</Name>
+<NumElts>1</NumElts>
+<Refnum>
+<Name>port</Name>
+<RefKind>VISA</RefKind>
+<Val>COM8</Val>
+</Refnum>
+</Cluster>
+<Cluster>
+<Name>IRM UnitÅiñ¢é¿ëïÅj</Name>
+<NumElts>1</NumElts>
+<Refnum>
+<Name>port</Name>
+<RefKind>VISA</RefKind>
+<Val></Val>
+</Refnum>
+</Cluster>
+<Cluster>
+<Name>Robot</Name>
+<NumElts>1</NumElts>
+<Refnum>
+<Name>port</Name>
+<RefKind>VISA</RefKind>
+<Val></Val>
+</Refnum>
+</Cluster>
+</Cluster>
+</LVData>

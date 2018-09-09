@@ -1,0 +1,519 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=shift_jis">
+<title>簡易ステートマシン</title>
+<style>
+
+<!--
+
+/***************************************************/
+
+/* MINIMAL STYLES */
+
+/* The following section defines styles that every HTML Help project should need. */
+
+
+
+/* Specifies White Background color */
+
+body {background-color:#FFFFFF; font-family:Verdana, sans-serif; font-size:8pt; color: #000000;}
+
+
+
+/* The default style of P is red to alert you that you need to apply a style class, such as Body. */
+
+P { margin-top:6.00pt; margin-bottom:6.00pt;}
+
+
+
+BR { font-size:4.00pt; }
+
+
+
+/* Use H1 for all topic headings. */
+
+H1 { margin-top:3.00pt; margin-bottom:3.00pt; font-size:150%; font-weight:bold;  }
+
+
+
+/* Use H2 for second-level headings. */
+
+H2 { margin-top:9.00pt; margin-bottom:3.00pt; font-size:125%; font-weight:bold;  }
+
+
+
+/* Use H3 for third-level headings. */
+
+H3 { margin-top:6.00pt; margin-bottom:3.00pt; font-size:100%; font-weight:bold;  }
+
+
+
+/* Use H4 for fourth-level headings. */
+
+H4 { margin-top:6.00pt; margin-bottom:3.00pt; font-size:100%; font-weight:bold;  }
+
+
+
+/* H5 and H6 have the same definition as H4 because you should not need this level of heading in one topic. If you need to use H5 or H6, consider breaking up your topic into more than one topic. */
+
+H5 { margin-top:6.00pt; margin-bottom:3.00pt; font-size:100%; font-weight:bold;  }
+
+H6 { margin-top:6.00pt; margin-bottom:3.00pt; font-size:100%; font-weight:bold;  }
+
+
+
+/* Use the Body style class for normal paragraphs. */
+
+P.Body {  }
+
+
+
+/* Use the Anchor style class for graphic references on a line by themselves. */
+
+P.Anchor { font-size:125%;  }
+
+
+
+/* Use the Indent style classes to indent a paragraph. If you need to indent text below a list item, use <br><br> to start the new paragraph within the same set of <li></li> tags. If you need to indent a list within another list, nest the indented list within the first list's set of <ol></ol> or <ul></ul> tags. */
+
+P.Indent1 { margin-left:12.00pt; margin-bottom:3.00pt;  }
+
+P.Indent2 { margin-left:24.00pt; margin-bottom:3.00pt;  }
+
+P.Indent3 { margin-left:36.00pt; margin-bottom:3.00pt;  }
+
+P.Indent4 { margin-left:48.00pt; margin-bottom:3.00pt;  }
+
+P.Indent5 { margin-left:60.00pt; margin-bottom:3.00pt;  }
+
+
+
+/* Use the LI style for all list items. */
+
+LI { margin-top:3.00pt; margin-bottom:3.00pt; }
+
+
+
+/* Use the OL style for numbered lists. You do not have to type the number for each list item in a numbered list. */
+
+OL { margin-left:22.00pt; margin-top:3.00pt; margin-bottom:3.00pt; text-indent:0pt; list-style-type: decimal; }
+
+
+
+/* Use the OL style for numbered lists. Nested lists will use the bullet types according to the nesting scheme below */
+
+ol ol {list-style-type:lower-alpha}
+
+ol ol ol {list-style-type:decimal}
+
+ol ol ol ol {list-style-type:lower-alpha}
+
+ol ol ol ol ol {list-style-type:decimal}
+
+ol ol ol ol ol ol {list-style-type:lower-alpha}
+
+ol ol ol ol ol ol ol {list-style-type:decimal}
+
+ol ol ol ol ol ol ol ol {list-style-type:lower-alpha}
+
+
+
+
+
+/* Use the EquationNum style class for numbered lists of equations. You do not have to type the number for each list item in a numbered list. */
+
+OL.EquationNum { margin-left:36.00pt; text-indent:0pt; list-style-type: decimal; }
+
+
+
+/* Use the List-abc style class for lettered lists. You do not have to type the letter for each list item in a lettered list. */
+
+OL.List-abc { margin-left:22.00pt; text-indent:0pt; list-style-type:lower-alpha; }
+
+
+
+/* Use the UL style for bulleted lists. You do not have to type the bullet for each list item in a bulleted list. */
+
+UL { margin-left:22.00pt; text-indent:0pt; margin-top:3.00pt; margin-bottom:3.00pt; list-style-type: disc; }
+
+
+
+/* Use the UL style for bulleted lists. Nested lists will use the bullet types according to the nesting scheme below. */
+
+ul ul {list-style-image: none;list-style-type: circle}
+
+ul ul ul {list-style-image:none;list-style-type:disc}
+
+ul ul ul ul {list-style-image: none;list-style-type: circle}
+
+ul ul ul ul ul {list-style-image:none;list-style-type:disc}
+
+ul ul ul ul ul ul {list-style-image: none;list-style-type: circle}
+
+ul ul ul ul ul ul ul {list-style-image:none;list-style-type:disc}
+
+ul ul ul ul ul ul ul ul ul{list-style-image: none;list-style-type: circle}
+
+
+
+/* Use the List-Box style class for bulleted lists with boxes instead of bullets. You do not have to type the box for each list item in a box list. */
+
+UL.List-Box { list-style-image: none;list-style-type: square}
+
+
+
+Table { font-size:100%; }
+
+
+
+/* Use the Borderless style class for tables that do not need borders, such as for 2-column or 3-column lists with no headings. */
+
+Table.Borderless { border:none; }
+
+
+
+/* Use the Bordered style class for tables that need borders. */
+
+Table.Bordered { border-width: 1pt; border-style: solid; border-color: #000000; border-collapse: collapse; }
+
+
+
+/* Use the TD style for table cells in Borderless or Borderless-Wide tables. */
+
+TD { vertical-align:top; padding:3px; }
+
+
+
+/* Use the Bordered style class for table headings and cells in Bordered or Bordered-Wide tables. */
+
+.Bordered { border-width: 1pt; border-style: solid; border-color: #000000; }
+
+
+
+/* Use the Icon style class for table cells that contain note, caution, warning, or tip icons, or LabVIEW datatype terminals. */
+
+TD.Icon { width:40px; }
+
+
+
+/* Use the TH style for table heading cells in Borderless or Borderless-Wide tables. */
+
+TH { font-weight:bold; padding:3px; }
+
+
+
+/* Use the Left-Align style class for table headings and cells that you want to left align instead of center align. */
+
+.Left-Align { text-align:left; }
+
+
+
+/***************************************************/
+
+/* CHARACTER FORMATS */
+
+/* The following section defines character formats that every HTML Help project should need. */
+
+
+
+/* CHARACTER FORMATS Updated to conform with the CSE HTML Validator Pro */
+
+/* The following section defines character formats that every HTML Help project should need. */
+
+
+
+/* Use the Dark-Red format for warnings or cautions. */
+
+.Dark-Red { color: #800000 }
+
+
+
+/* Use the Monospace format for code or syntax examples. */
+
+.Monospace { font-family: Courier New; font-size: 100%; }
+
+
+
+/* Use the Monospace-Bold format for messages and responses that the computer automatically prints to the screen. */
+
+.Monospace-Bold { font-family: Courier New; font-weight: bold; font-size: 100%; }
+
+
+
+/* Use the Monospace-Italic format to denote text that is a placeholder for a word or value that the user must supply. */
+
+.Monospace-Italic { font-family: Courier New; font-style: italic; font-size: 100%; }
+
+
+
+/* small class */
+
+.smallFont { font-size:87.5%; }
+
+
+
+/* Bold class */
+
+.Bold { font-weight: bold; }
+
+
+
+/* Italic class */
+
+.Italic { font-style: italic; }
+
+
+
+/* Use the Platform format to denote a specific platform. */
+
+.Platform { color: #0000FF; font-weight: bold; }
+
+
+
+/* Use the Symbol format for characters not in the Verdana character set. Use this format sparingly. When possible, you should use the correct ASCII code for the symbol or use a graphic to recreate the symbol. */
+
+.Symbol { font-family: Symbol; }
+
+
+
+/* Use the Red-text format to call attention to text that needs  information added or edited by techcomm */
+
+.Red-text {color: #FF0000;}
+
+
+
+/* Use the Green-Underline format for the green defintion in the conventions topic */
+
+.Green-Underline {color: #007700; text-decoration : underline;}
+
+
+
+/* Use the glossButton format for the glossary buttons used in the glossary topic */
+
+.glossButton { font-size:12px; color:black; }
+
+
+
+/* Use for text sections and hyphenated words that should not break at line wraps */
+
+.nobreak{white-space:nowrap}
+
+
+
+/* Use for template instructions. */
+
+.instructions{color:red; font-style:italic}
+
+
+
+/*Use for words and text sections that do not need to be localized */
+
+.DNL { }
+
+
+
+/* The following styles define the color of links. */
+
+a:link { color: #007700 }
+
+a:visited { color: #7F007F }
+
+a:link:hover { color: #FF0000 }
+
+a:link:active { color: #FF0000 }
+
+
+
+/***************************************************
+
+** Forms */
+
+
+
+form { margin-top:0pt; margin-bottom:3pt; color:black; }
+
+select { font-size:100%; color:black; }
+
+
+
+/*******************************************************
+
+** Margins **
+
+** Use these styles for block-level elements inside tables cells or list items where you do not want extra padding at the top or bottom of a cell. */
+
+.noTopMargin { margin-top:0pt;}
+
+.noBottomMargin { margin-bottom:0pt;}
+
+
+
+/***************************************************
+
+** CODE STYLES **
+
+** The following section defines styles that you need to format entire sections of code or syntax examples. If you have just a few words you need to format as a code or syntax example, use the Monospace character format. */
+
+
+
+P.Code { margin-top:3.00pt; margin-bottom:0.00pt; font-family:Courier New;  }
+
+P.Code1 { margin-left:12.00pt; margin-top:3.00pt; margin-bottom:0.00pt; font-family:Courier New;  }
+
+P.Code2 { margin-left:24.00pt; margin-top:3.00pt; margin-bottom:0.00pt; font-family:Courier New;  }
+
+P.Code3 { margin-left:36.00pt; margin-top:3.00pt; margin-bottom:0.00pt; font-family:Courier New;  }
+
+-->
+</style>
+<script type="text/javascript"> // define hyperlinks and function for launching a URL in a browser
+
+var L_trademarks = "http://digital.ni.com/express.nsf/bycode/rdtradjp";
+var L_patents = "http://digital.ni.com/express.nsf/bycode/rdlv17ja";
+var L_walkthrough = "http://digital.ni.com/express.nsf/bycode/DW_SSMjp";
+
+function WWW(url) 
+	{
+	var urlWindow;
+	urlWindow = window.open(url, "New", "directories=yes,location=yes,menubar=yes,resizable=yes,scrollbars=yes,status=yes,toolbar=yes");
+	}
+</script>
+
+</HEAD>
+<body>
+
+<h1>簡易ステートマシン</h1>
+
+<p>簡易ステートマシンテンプレートを使用すると、コードの特定セクションの実行シーケンスを容易に定義できます。この実装は、多くの場合ムーアマシンと呼ばれ、現在のステートにおける決定に基づいて次のステートを決定します。このデザインでは、ユーザのアプリケーションのストラクチャに大幅な変更を加えることなく、新しいコードセクションの追加、コードセクションの削除、セクションの実行順序の変更を簡単に行うことができます。</p>
+
+<h2>システム要件</h2>
+<p>LabVIEWベースパッケージ、開発システム、プロフェッショナル開発システム</p>
+
+<h2>使用例</h2>
+<p>このテンプレートは、以下で構成されるアプリケーションに適してします。</p><ul><li>ステート</li>
+	<li>特定のステートに移行するタイミングを決定する意思決定論理</li></ul><p>たとえば、以下のアプリケーションにはステートマシンパターンが有効です。</p><ul><li>単一ページまたはタブ付きのダイアログボックス。ダイアログボックスの各タブは、1つのステートです。ユーザが特定のタブをクリックするとステートが移行します。各タブのステートには、ユーザが実行できるすべての操作が含まれます。</li>
+	<li>現金自動預け払い機（ATM）。このアプリケーションには、ユーザ入力待機、要求金額に対する口座残高の確認、支払い、レシート印刷などのステートがあります。</li>
+	<li>1つの測定値を取り、ディスクに記録し、次のユーザ操作を待機するアプリケーション。このアプリケーションには、ユーザ入力待機、測定、データの記録、データの表示などのステートがあります。</li></ul><h2>概要</h2><img src="loc_simple_state_machine.png" border="1"><p>メモ:</p><ul><li>上記ダイアグラム中の各ステートは、Main.vi中の各サブダイアグラムに対応します。各ステートは次の動作を実行します。<ol>
+			<li>操作を実行する。</li>
+			<li>Whileループ上にあるシフトレジスタに命令を渡すことによって、次のステートをステートマシンに伝達する。</li>
+		</ol>
+	
+	</li>
+	<li>初期化後に、ステートマシンはWait for Eventステートに移行します。このステートには、フロントパネルの変更を待機するイベントストラクチャが含まれます。ユーザがボタンをクリックすると、イベントが認識され、イベントストラクチャの適切なサブダイアグラムに切り替えられます。このサブダイアグラムは適切なステートへの移行をトリガします。</li>
+	<li>各ステートはデータクラスタにアクセスできます。このクラスタのデータタイプは<span id="Monospace">Data.ctl</span>で定義されています。</li>
+	<li>有効なステートは、タイプ定義である<span id="Monospace">State.ctl</span>にリストされています。タイプ定義によってステートを移行させることで、使用するステートを限定し、ステートマシンが不明なステートに移行する可能性を低減することができます。</li>
+	<li><strong>停止</strong>ステートだけがアプリケーションを停止できます。この設計では、以下を保証することで意図しないシャットダウンまたは部分的なシャットダウンを回避できます。<ul><li>ユーザがアプリケーションの停止を意図した場合にのみシャットダウンコードを実行する。</li>
+			<li>シャットダウンコードを必ずに最後まで実行する。</li></ul></li>
+	<li>ステートは1度に1つだけ実行され、1つのWhileループではすべてのタスクが同じレートで実行されます。マルチレートでの実行または並列タスクが必要な場合は、<strong>プロジェクトを作成</strong>ダイアログボックスで選択できる「キューメッセージハンドラ」テンプレートまたは「アクターフレームワーク」テンプレートの使用をお勧めします。</li>
+	<li>イベントを待機ステートは、ユーザ入力を認識する唯一のステートです。ユーザ入力を受け入れるためには、ステートマシンがこのステートになければなりません。</li></ul><h2>このテンプレートを実行する</h2>
+<ol>
+	<li><strong>プロジェクトエクスプローラ</strong>ウィンドウで、Main.viを開いて実行します。</li>
+	<li>フロントパネル制御器をクリックしてさまざまなポップアップダイアログボックスを開きます。</li>
+</ol>
+
+<h2>このテンプレートを変更する</h2>
+
+<h3>ニーズを特定する</h3>
+<p>テンプレートのカスタマイズを開始する前に、以下の点を明確にします。</p><ul><li><strong>アプリケーションに含まれるステート</strong> これにより<a href="#add_state">追加するステート</a>が決まります。</li>
+	<li><strong>各ステートの次のステート</strong> これにより、各ステートがWhileループのシフトレジスタへ送信する<strong>次のステート</strong>列挙体の値が決まります。<br><br>条件に応じて、1つのステートから複数の異なるステートへ移行することもできます。たとえば、このテンプレートのWait for Eventステートはユーザの入力内容に応じて異なるステートへ移行します。</li>
+	<li><strong>各ステートがアクセスする必要のあるデータ</strong> これにより<a href="#change_data">Data.ctlに追加するデータタイプ</a>が決まります。</li>
+	<li><strong>発生する可能性のあるエラー、およびそのようなエラーが発生した場合のアプリケーションの応答</strong> これにより<a href="#error_handling">必要なエラー処理</a>の規模が決まります。</li></ul><h3>初期化コードを追加する</h3>
+<p>アプリケーションに初期化コードを追加するには、以下の手順に従ってください。</p>
+<ol>
+	<li>ケースストラクチャの<strong>Initialize</strong>サブダイアグラムを開きます。</li>
+	<li>アプリケーションを初期化するためのコードを追加します。たとえば、ログ用にディスク上のファイルを開いたり、<span id="Monospace">Data.ctl</span>のデータを特定の値に初期化するコードなどを記述します。</li>
+	<li>移行先となるステートを決定します。Initializeステートは、デフォルトではWait for Eventステートへ移行します。<br><br><img src="loc_state_transition.png"><br><br>アプリケーションでのニーズに応じて、他のステートへ移行するようコードを変更することができます。</li>
+</ol>
+
+<h3>ステートの移行を開始する制御器を追加する</h3>
+<ol>
+	<li>フロントパネルに制御器を追加します。</li>
+	<li>ケースストラクチャのWait for Eventサブダイアグラムを開きます。</li>
+	<li>イベントストラクチャにイベントケースを追加します。</li>
+	<li>イベントを、新しく追加した制御器の値が変更されるとトリガされるよう構成します。以下に例を示します。<br><br><br><img src="loc_new_button_value_change.png"></li>
+	<li><strong>OK</strong>をクリックします。イベントストラクチャにサブダイアグラムが作成されます。</li>
+	<li>このサブダイアグラムにある新しい制御器のブロックダイアグラム端子をドラッグします。</li>
+	<li>ユーザによるこの制御器の操作に応じた移行先のステートを決定し、ステートの値の列挙体を<strong>次のステート</strong>出力トンネルに配線します。<br><br><img src="loc_new_button_transition.png"><br><br>移行先のステートがない場合は、<a href="#add_state">追加</a>します。</li>
+</ol><a name="add_state"></a><h3>ステートを追加する</h3>
+<p>ステートを追加するには以下の手順に従ってください。</p>
+<ol>
+	<li>有効なステートを含むタイプ定義であるStates.ctlを更新します。<ol>
+			<li>States.ctlの列挙体を探し、タイプ定義を開きます。<br><br> <img src="loc_open_states_typedef.png"> <br><br><strong>制御器エディタ</strong>ウィンドウが開きます。</li>
+			<li><strong>ステート</strong>列挙体で新しいステート用のスペースを追加します。</li>
+			<li>新しいステートの名前を入力します。以下に例を示します。<br><br><img src="loc_new_state.png"></li>
+			<li>制御器の外側をクリックしてステートリストに名前を追加します。</li>
+			<li><strong>ファイル&#8594;変更を適用</strong>を選択します。</li>
+		</ol>
+	</li>
+	<li>ステートマシンにステートを追加します。<ol>
+			<li>Main.viのケースストラクチャにサブダイアグラムを追加します。</li>
+			<li>ステートが実行するコードを追加します。このコードを記述する際は、以下のガイドラインに従ってください。<ul><li>ステートデータのアクセスおよび修正には、「名前でバンドル解除」関数と「名前でバンドル」関数を使用します。<br><br><img src="loc_use_state_data.png"></li>
+				<li>関数のエラー端子は、エラーシフトレジスタに配線してください。</li>
+				<li>ブール出力トンネルにはFALSE定数を配線してください。停止ステートだけがループを停止できます。</li>
+				<li>各ステートで、その次の移行先ステートを指定してください。次のステートの値を「次のステート」出力トンネルに配線します。この端子は直接配線するか、条件論理を実装できます。以下の図は、そのような論理の例を示したものです。<br><br> <img src="loc_conditional_state_transition.png"> <br><br>上記のコードでは、<strong>データ</strong>が0より大きい場合は、<strong>User State 1</strong>が次のステートとなります。それ以外の場合は<strong>User State 2</strong>が次のステートとなります。より高度な条件論理を記述するには、ケースストラクチャを使用します。</li>
+				<li>アプリケーションに次のステートへの移行コードを追加してください。</li></ul></li>
+		</ol>
+	</li>
+</ol><a name="change_data"></a><h3>ステートがアクセスするデータタイプを変更する</h3>
+<p>ステートがアクセスするデータタイプを変更するには、以下の手順に従ってください。</p>
+<ol>
+	<li><span id="Monospace">Data.ctl</span>列挙体を見つけ、タイプ定義を開きます。<br><br> <img src="loc_open_data_typedef.png"> <br><br><strong>制御器エディタ</strong>ウィンドウが開きます。</li>
+	<li>制御器をカスタマイズします。</li>
+	<li><strong>ファイル&#8594;変更を適用</strong>を選択します。</li>
+</ol>
+
+<h3>シャットダウンコードを追加する</h3>
+<p>ケースストラクチャのStopサブダイアグラムにシャットダウンコードを追加します。このケースはアプリケーションを停止する唯一のケースであるため、このサブダイアグラムに追加するコードは、必ずアプリケーションが停止する前にのみ実行されます。この設計によって、意図しないシャットダウンまたは部分的なシャットダウンを回避できます。</p>
+
+<p>一般に、シャットダウンコードは以下のタスクを実行します。</p><ul><li>開いているすべてのリファレンスを閉じてメモリを解放します。</li>
+	<li>使用中のすべてのバッファを破棄します。</li>
+	<li>ハードウェア入力チャンネルに安全な値を書き込みます。</li></ul><a name="error_handling"></a><h3>エラー処理を追加する</h3>
+<p>このテンプレートは、デフォルトでは1つの関数の<strong>エラー出力</strong>端子にエラーが返されると停止します。ただし、特定のエラーを無視したり、より高度なエラー処理を実装する必要がある場合があります。エラー処理を追加するには、以下の手順に従ってください。</p>
+
+<ol>
+	<li><a href="#add_state">Errorステートを追加</a>します。</li>
+	<li>Errorステートには、エラーを処理するためのコードを記述します。</li>
+	<li>他のすべてのステートを、エラーが発生した場合に確実にErrorステートに移行するよう構成します。以下に例を示します。<br><br><img src="loc_transition_error.png"></li>
+</ol>
+
+<h3>ユーザインタフェースを削除する</h3>
+<p>アプリケーションがユーザインタフェースを必要としない場合は、以下の手順に従って削除します。</p>
+
+<ol>
+	<li>すべてのフロントパネル制御器および表示器を削除します。</li>
+	<li>Main.viのケースストラクチャからWait for Eventサブダイアグラムを削除します。</li>
+	<li>壊れているワイヤをすべて修正します。</li>
+</ol>
+
+<p><span id="Monospace">State.ctl</span>から<strong>Wait for Event</strong>を削除することもできます。これにより、ステートマシンがこのステートへの移行を試みることがなくなります。ただし、これを行う前に、アプリケーション内に存在するこのステートを呼び出す列挙体を確認する必要があります。変更した<span id="Monospace">State.ctl</span>を保存すると、これらの列挙体も変更されます。新しいステートが意図した通りかどうか確認してください。</p><a name="rel_info"><h2>関連情報</h2></a><p>このテンプレートで扱われているLabVIEWの概念またはオブジェクトの詳細については、LabVIEWで<strong>ヘルプ&#8594;LabVIEWヘルプ</strong>を選択してアクセスできる『LabVIEWヘルプ』を参照してください。<em></em>LabVIEWオブジェクトの上にカーソルを移動して、<strong>詳細ヘルプ</strong>ウィンドウを使用して各オブジェクトの基本情報を表示することもできます。LabVIEWで<strong>詳細ヘルプ</strong>ウィンドウを表示するには、<strong>ヘルプ&#8594;詳細ヘルプを表示</strong>を選択します。</p>
+
+<p>測定アプリケーションにおけるこのテンプレートの使用例については、<strong>プロジェクトを作成</strong>ダイアログボックスで「有限測定」サンプルプロジェクトを参照してください。</p>
+
+<p>このテンプレートの開発者ウォークスルーについては、<a href="javascript:WWW(L_walkthrough)">ni.com/jp</a>を参照してください。</p>
+
+<hr>
+<h2>法的情報</h2><!--Copyright--><p><strong>著作権</strong></p>
+<p>&copy; 2016 National Instruments.All rights reserved.</p>
+
+<p>著作権法に基づき、National Instruments Corporationの書面による事前の許可なく、本書のすべて又は一部を写真複写、記録、情報検索システムへの保存、及び翻訳を含め、電子的又は機械的ないかなる形式によっても複製又は転載することを禁止します。</p>
+
+<p>NIは他者の知的財産を尊重しており、お客様も同様の方針に従われますようお願いいたします。NIソフトウェアは著作権法その他知的財産権に関する法律により保護されています。NIソフトウェアを用いて他者に帰属するソフトウェアその他のマテリアルを複製することは、適用あるライセンスの条件その他の法的規制に従ってそのマテリアルを複製できる場合に限り可能であるものとします。</p>
+
+<p><strong>エンドユーザ使用許諾契約及び他社製品の法的注意事項</strong></p>
+<p>エンドユーザ使用許諾契約（EULA）及び他社製品の法的注意事項はインストール後の以下の場所にあります。</p><ul><li>注意事項は、<span class="Monospace">&lt;National Instruments&gt;&yen;_Legal Information</span>及び<span class="Monospace">&lt;National Instruments&gt;</span>ディレクトリにあります。</li> 
+<li>EULAは、<span class="Monospace">&lt;National Instruments&gt;&yen;Shared&yen;MDF&yen;Legal&yen;license</span>ディレクトリにあります。</li>
+<li>NI製品で作成したインストーラに法律情報を組み込む方法については、<span class="Monospace">&lt;National Instruments&gt;&yen;_Legal Information.txt</span>を確認してください。</li></ul><p><strong>米国政府の権利の制限</strong></p>
+<p>お客様が米国政府の機関、省又はその他の事業体（「米国政府」と総称する）である場合、本書に記載の技術データの使用、複製、再製、公表、修正、開示又は転送は、民間機関用の連邦調達規則52.227-14と軍事機関用の国防省連邦調達規則補足252.227-7014及び252.227-7015に基づく限定権利条項の適用を受けます。</p>
+
+<p><strong>IVI Foundation Copyright Notice</strong></p>
+
+<p><span class="DNL">Content from the IVI specifications reproduced with permission from the IVI Foundation.</span></p>
+
+<p><span class="DNL">The IVI Foundation and its member companies make no warranty of any kind with regard to this material, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose. The IVI Foundation and its member companies shall not be liable for errors contained herein or for incidental or consequential damages in connection with the furnishing, performance, or use of this material.</span></p><!--Trademarks--><p><strong>商標</strong></p>
+
+<p><span class="DNL">NI</span>の商標については、<span class="DNL">NI Trademarks and Logo Guidelines</span>（<a href="http://digital.ni.com/express.nsf/bycode/rdtradjp" target="_blank"><span class="DNL">ni.com/trademarks</span></a>）を参照してください。本書中に記載されたその他の製品名及び企業名は、それぞれの企業の商標又は商号です。</p><!--Patents--><p><strong>特許</strong></p>
+<p>National Instrumentsの製品を保護する特許については、ソフトウェアで参照できる特許情報（<strong>ヘルプ&#8594;特許</strong>）、メディアに含まれている<span class="Monospace">patents.txt</span>ファイル、又は<a href="http://digital.ni.com/express.nsf/bycode/rdlv17ja" target="_blank">ni.com/patents</a>からアクセスできる<em></em>National Instruments Patent Noticeのうち、該当するリソースから参照してください。</p>
+
+</body>
+</html>

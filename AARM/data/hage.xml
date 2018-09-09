@@ -1,0 +1,130 @@
+<?xml version='1.0' standalone='yes' ?>
+<LVData xmlns="http://www.ni.com/LVData">
+<Version>17.0f2</Version>
+<Cluster>
+<Name>Hardware</Name>
+<NumElts>6</NumElts>
+<Cluster>
+<Name>SQUID</Name>
+<NumElts>5</NumElts>
+<Refnum>
+<Name>port</Name>
+<RefKind>VISA</RefKind>
+<Val></Val>
+</Refnum>
+<Cluster>
+<Name>Flux constant</Name>
+<NumElts>3</NumElts>
+<DBL>
+<Name>X</Name>
+<Val>0.00000000000000</Val>
+</DBL>
+<DBL>
+<Name>Y</Name>
+<Val>0.00000000000000</Val>
+</DBL>
+<DBL>
+<Name>Z</Name>
+<Val>0.00000000000000</Val>
+</DBL>
+</Cluster>
+<U16>
+<Name>X</Name>
+<Val>0</Val>
+</U16>
+<U16>
+<Name>Y</Name>
+<Val>0</Val>
+</U16>
+<U16>
+<Name>Z</Name>
+<Val>0</Val>
+</U16>
+</Cluster>
+<Cluster>
+<Name>Sample Handler</Name>
+<NumElts>7</NumElts>
+<Refnum>
+<Name>port</Name>
+<RefKind>VISA</RefKind>
+<Val></Val>
+</Refnum>
+<DBL>
+<Name>BG 1</Name>
+<Val>0.00000000000000</Val>
+</DBL>
+<DBL>
+<Name>BG 2</Name>
+<Val>0.00000000000000</Val>
+</DBL>
+<DBL>
+<Name>Sensor</Name>
+<Val>0.00000000000000</Val>
+</DBL>
+<DBL>
+<Name>AF 1</Name>
+<Val>0.00000000000000</Val>
+</DBL>
+<DBL>
+<Name>AF 2</Name>
+<Val>0.00000000000000</Val>
+</DBL>
+<DBL>
+<Name>Home (relative to limit switch)</Name>
+<Val>0.00000000000000</Val>
+</DBL>
+</Cluster>
+<Cluster>
+<Name>Degausser</Name>
+<NumElts>5</NumElts>
+<Refnum>
+<Name>port</Name>
+<RefKind>VISA</RefKind>
+<Val></Val>
+</Refnum>
+<DBL>
+<Name>Ramp rate</Name>
+<Val>0.00000000000000</Val>
+</DBL>
+<DBL>
+<Name>Tracking timeout (sec)</Name>
+<Val>0.00000000000000</Val>
+</DBL>
+<I16>
+<Name>Communication Delays</Name>
+<Val>0</Val>
+</I16>
+<DBL>
+<Name>Maximum field (Oe)</Name>
+<Val>0.00000000000000</Val>
+</DBL>
+</Cluster>
+<Cluster>
+<Name>ARM Unit</Name>
+<NumElts>1</NumElts>
+<Refnum>
+<Name>port</Name>
+<RefKind>VISA</RefKind>
+<Val></Val>
+</Refnum>
+</Cluster>
+<Cluster>
+<Name>IRM UnitÅiñ¢é¿ëïÅj</Name>
+<NumElts>1</NumElts>
+<Refnum>
+<Name>port</Name>
+<RefKind>VISA</RefKind>
+<Val></Val>
+</Refnum>
+</Cluster>
+<Cluster>
+<Name>Robot</Name>
+<NumElts>1</NumElts>
+<Refnum>
+<Name>port</Name>
+<RefKind>VISA</RefKind>
+<Val></Val>
+</Refnum>
+</Cluster>
+</Cluster>
+</LVData>
