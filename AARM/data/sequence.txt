@@ -1,3 +1,8 @@
-measure
-static ARM, Axis=Z, AF=100, Ramp rate=3, Hold time=3, ARM field=100, Velocity=2500
+pick-place, Motion=2, Sample=30, Surface=1, Angle=330
 EOS
+pick-place, Motion=1, Sample=1, Surface=1, Angle=0
+pick-place, Motion=2, Sample=0, Surface=1, Angle=30
+EOS
+Motion=2の角度は0から360。90度以上は逆モーションでロボが動く。
+measure, Velocity=2000, Label=hoge
+static ARM, Axis=Z, AF=600, Ramp rate=3, Hold time=3, ARM field=100, Velocity=2500

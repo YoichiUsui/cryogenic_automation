@@ -54,6 +54,7 @@
 			<Item Name="Sequence_controll.ctl" Type="VI" URL="../controls/Sequence_controll.ctl"/>
 			<Item Name="wait_mode.ctl" Type="VI" URL="../controls/wait_mode.ctl"/>
 			<Item Name="Param_static_AF.ctl" Type="VI" URL="../controls/Param_static_AF.ctl"/>
+			<Item Name="SQUID_data.ctl" Type="VI" URL="../controls/SQUID_data.ctl"/>
 		</Item>
 		<Item Name="subVIs" Type="Folder">
 			<Property Name="NI.SortType" Type="Int">3</Property>
@@ -74,7 +75,10 @@
 				<Item Name="Convert_measure_line.vi" Type="VI" URL="../subVIs/Convert_measure_line.vi"/>
 				<Item Name="Convert_sequence_line_to_command.vi" Type="VI" URL="../subVIs/Convert_sequence_line_to_command.vi"/>
 				<Item Name="Convert_static_ARM_line.vi" Type="VI" URL="../subVIs/Convert_static_ARM_line.vi"/>
+				<Item Name="Convert_pick-place_line.vi" Type="VI" URL="../subVIs/Convert_pick-place_line.vi"/>
 				<Item Name="Sequence.vi" Type="VI" URL="../subVIs/Sequence.vi"/>
+				<Item Name="Convert_distance_to_command.vi" Type="VI" URL="../subVIs/Convert_distance_to_command.vi"/>
+				<Item Name="Convert_zrotate_line.vi" Type="VI" URL="../subVIs/Convert_zrotate_line.vi"/>
 			</Item>
 			<Item Name="test_connection" Type="Folder">
 				<Item Name="test_connection.vi" Type="VI" URL="../subVIs/test_connection.vi"/>
@@ -86,7 +90,11 @@
 			<Item Name="testVI" Type="Folder" URL="../subVIs/testVI">
 				<Property Name="NI.DISK" Type="Bool">true</Property>
 			</Item>
-			<Item Name="SQUID" Type="Folder"/>
+			<Item Name="SQUID" Type="Folder">
+				<Item Name="measure_element.vi" Type="VI" URL="../subVIs/measure_element.vi"/>
+				<Item Name="measure_once.vi" Type="VI" URL="../subVIs/measure_once.vi"/>
+				<Item Name="calculate_magnetization.vi" Type="VI" URL="../subVIs/calculate_magnetization.vi"/>
+			</Item>
 			<Item Name="Configure_HW_dialog.vi" Type="VI" URL="../subVIs/Configure_HW_dialog.vi"/>
 			<Item Name="one_by_one.vi" Type="VI" URL="../subVIs/one_by_one.vi"/>
 			<Item Name="Reinit_to_Default_on_Multiple_Controls.vi" Type="VI" URL="../subVIs/Reinit_to_Default_on_Multiple_Controls.vi"/>
@@ -147,6 +155,11 @@
 				<Item Name="VISA Configure Serial Port (Instr).vi" Type="VI" URL="/&lt;vilib&gt;/Instr/_visa.llb/VISA Configure Serial Port (Instr).vi"/>
 				<Item Name="VISA Configure Serial Port" Type="VI" URL="/&lt;vilib&gt;/Instr/_visa.llb/VISA Configure Serial Port"/>
 				<Item Name="Dflt Data Dir.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Dflt Data Dir.vi"/>
+				<Item Name="Write Delimited Spreadsheet.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Write Delimited Spreadsheet.vi"/>
+				<Item Name="Write Delimited Spreadsheet (DBL).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Write Delimited Spreadsheet (DBL).vi"/>
+				<Item Name="Write Spreadsheet String.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Write Spreadsheet String.vi"/>
+				<Item Name="Write Delimited Spreadsheet (I64).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Write Delimited Spreadsheet (I64).vi"/>
+				<Item Name="Write Delimited Spreadsheet (string).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Write Delimited Spreadsheet (string).vi"/>
 			</Item>
 			<Item Name="Graph Data.ctl" Type="VI" URL="../controls/Graph Data.ctl"/>
 		</Item>
